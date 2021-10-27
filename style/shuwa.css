@@ -1,0 +1,25 @@
+.start {
+    font-size: 18px;
+    display: inline-block;
+    padding: 0.5em 1em 0.3em;
+    color: #ffffff;
+    border-radius: 25px;
+    background-color: #F24968;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.inactive{
+    display: inline-block;
+    padding: 16px 24px;
+    text-decoration: none;
+    border: 1px;
+    background: #F24968;
+    color: #fff;
+    box-shadow: 0px 2px 4px #575;
+  }
+
+#timer {
+    font-size: 24px;
+}

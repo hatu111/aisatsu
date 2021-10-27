@@ -1,0 +1,46 @@
+h1 {
+  position: relative;
+  padding: 0.25em 0;
+}
+
+h1:after {
+  content: "";
+  display: block;
+  height: 4px;
+  background: -webkit-linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
+  background: linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
+}
+
+h2 {
+  position: relative;
+  line-height: 1.4;
+  padding:0.25em 1em;
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+  
+h2 {
+  background: #0D5673; /*背景色*/
+  padding: 0.5em;/*文字周りの余白*/
+  color: white;/*文字を白に*/
+  border-radius: 0.5em;/*角の丸み*/
+}
+
+h3 {
+  font-size: medium
+  ;
+}
+
+.list{
+  margin: 30px;
+}
+
+.setumei{
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.danraku {
+   margin-top: 40px; 
+}

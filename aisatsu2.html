@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/shuwa.css">
+    <link rel="stylesheet" href="style/list.css">
+    <title>しゅわっち | 手話AI-あいさつ２</title>
+    <link rel="icon" href="image/favicon.ico" id="favicon">
+    <link rel="image/apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+</head>
+<body>
+  <header>
+    <div class="head">
+    <div id="titlelogo">
+      <img src="image/title.png" alt="しゅわっちロゴ">
+    </div>
+      <ul class="menu">
+        <li><a href="index.html">Home</a>
+        </li>
+        <li><a href="rec.html">録音</a></li>
+        <li><a href="#">手話AI</a>
+            <ul>
+              <li><a href="aisatsu.html">あいさつ1</a></li>
+              <li><a href="#">あいさつ2</a></li>
+              <li><a href="henji.html">返事</a></li>
+              <li><a href="kimochi.html">気持ち</a></li>
+              <li><a href="gakkou.html">学校</a></li>
+            </ul>
+        </li>
+        <li><a href="#">使い方</a>
+            <ul>
+              <li><a href="rec-how.html">録音</a></li>
+              <li><a href="shuwa-how.html">手話AI</a></li>
+              <li><a href="list.html">手話リスト</a></li>
+            </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="nakami">
+      <h1>あいさつ2</h1>
+      <button class="start" type="button" onclick="init()">カメラスタート</button>
+      <a href="" id="start" class="start">手話スタート</a>
+      <span id="timer">3</span>
+      <div><canvas id="canvas"></canvas></div>      
+      <div id="label-container"></div>
+    </div>  
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+    <script type="text/javascript">
+
+    // Teachable Machineのあいさつ2モデルへのリンク
+    const URL = "https://teachablemachine.withgoogle.com/models/2q1V5fE1o/";
+    let model, webcam, ctx, labelContainer, maxPredictions;
+        
+    async function init() {
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
+        
+      // モデルのロード
+      model = await tmPose.load(modelURL, metadataURL);
+      maxPredictions = model.getTotalClasses();
+        
+      // カメラ
+      const size = 400;
+      const flip = true; 
+      webcam = new tmPose.Webcam(size, size, flip);
+      await webcam.setup();
+      await webcam.play();
+      window.requestAnimationFrame(loop);
+        
+      const canvas = document.getElementById("canvas");
+      canvas.width = size; canvas.height = size;
+      ctx = canvas.getContext("2d");
+      labelContainer = document.getElementById("label-container");
+      for (let i = 0; i < maxPredictions; i++) {
+        labelContainer.appendChild(document.createElement("div"));
+      }
+    }
+        
+    async function loop(timestamp) {
+      webcam.update();
+      await predict();
+      window.requestAnimationFrame(loop);
+    }
+    
+    async function predict() {
+      const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+      const prediction = await model.predict(posenetOutput);
+      for (let i = 0; i < maxPredictions; i++) {
+       const classPrediction =
+       prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+       labelContainer.childNodes[i].innerHTML = classPrediction;
+       if(prediction[i].probability > 0.9){
+         this.className = prediction[i].className;
+         //console.log(className);
+       }
+
+      }
+      // ポーズを描く
+      drawPose(pose);
+    }
+        
+    function drawPose(pose) {
+      if (webcam.canvas) {
+        ctx.drawImage(webcam.canvas, 0, 0);
+      }
+    }
+
+    // カウントダウン
+    window.onload=function(){
+      document.querySelector('#start').addEventListener('click',function(e){
+        e.preventDefault();
+        var count = 4;
+        var id = setInterval(function(){
+          count--;
+          document.querySelector('#timer').textContent=count;
+          if(count <= 0) clearInterval(id);
+        },1000);
+        setTimeout(AI, 6500);
+      });
+    }
+
+    // AIの判定部分
+    function AI(){
+      var pose1 = 0;
+      var pose2 = 0;
+      var pose3 = 0;
+      var pose4 = 0;
+
+      pose1 = className;
+      console.log("1" + pose1);
+
+
+      function sleep(waitSec, callbackFunc) {
+        var spanedSec = 0;
+        var id = setInterval(function () {
+          spanedSec++;
+          if (spanedSec >= waitSec) {
+            clearInterval(id);
+            if (callbackFunc) callbackFunc();
+          }
+        }, 800);
+      }
+      sleep(2, function () {
+        pose2 = className;
+        console.log("2" + pose2);
+      });
+
+      function sleep(waitSec, callbackFunc) {
+        var spanedSec = 0;
+        var id = setInterval(function () {
+          spanedSec++;
+          if (spanedSec >= waitSec) {
+            clearInterval(id);
+            if (callbackFunc) callbackFunc();
+          }
+        }, 800);
+      }
+      sleep(4, function () {
+        pose3 = className;
+        console.log("3" + pose3);
+      });
+
+      function sleep(waitSec, callbackFunc) {
+        var spanedSec = 0;
+        var id = setInterval(function () {
+          spanedSec++;
+          if (spanedSec >= waitSec) {
+            clearInterval(id);
+            if (callbackFunc) callbackFunc();
+          }
+        }, 800);
+      }
+      sleep(6, function () {
+        pose4 = className;
+        console.log("4" + pose4);
+      });
+      function sleep(waitSec, callbackFunc) {
+        var spanedSec = 0;
+        var id = setInterval(function () {
+          spanedSec++;
+          if (spanedSec >= waitSec) {
+            clearInterval(id);
+            if (callbackFunc) callbackFunc();
+          }
+        }, 800);
+      }
+      sleep(10, function () {
+        if(pose1 == '5-1' || pose2 == '5-1'){
+          var text = "さようなら"
+          speechSynthesis.speak(
+          new SpeechSynthesisUtterance(text)
+          );
+        }
+        else if(pose1 == '5-2' && pose2 == '5-3'){
+          var text = "ありがとう"
+          speechSynthesis.speak(
+          new SpeechSynthesisUtterance(text)
+          );
+        }
+        else if(pose1 == '5-4' && pose2 == '5-5'){
+          var text = "ごめんなさい"
+          speechSynthesis.speak(
+          new SpeechSynthesisUtterance(text)
+          );
+        }
+      });
+    }
+    </script>         
+  <footer>
+    <div id="button">footer</div>
+    <div id="container">
+      <div id="cont">
+        <div class="copyright">
+          <p>© 2021 - Hatsumaker</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+</body>
+</html>

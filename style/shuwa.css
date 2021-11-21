@@ -4,10 +4,11 @@
     padding: 0.5em 1em 0.3em;
     color: #ffffff;
     border-radius: 25px;
-    background-color: #F24968;
+    background-color: #f582ae;
     border: none;
     cursor: pointer;
     margin-bottom: 20px;
+    text-decoration: none;
 }
 
 .inactive{
@@ -15,11 +16,14 @@
     padding: 16px 24px;
     text-decoration: none;
     border: 1px;
-    background: #F24968;
+    background: #f582ae;
     color: #fff;
     box-shadow: 0px 2px 4px #575;
+    
   }
 
 #timer {
-    font-size: 24px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #001858;
 }

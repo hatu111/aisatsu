@@ -55,7 +55,8 @@
         <button class="start" type="button" onclick="init()">カメラスタート</button>
         <a href="" id="start" class="start">手話スタート</a>
         <span id="timer">3</span>
-        <div><canvas id="canvas"></canvas></div>      
+        <div><canvas id="canvas"></canvas></div>  
+        <div id="textarea1">手話がここに翻訳されます</div>
         <div id="label-container"></div>
       </div>  
     </div>
@@ -106,11 +107,10 @@
          const classPrediction =
          prediction[i].className + ": " + prediction[i].probability.toFixed(2);
          labelContainer.childNodes[i].innerHTML = classPrediction;
-         if(prediction[i].probability > 0.9){
+         if(prediction[i].probability > 0.8){
            this.className = prediction[i].className;
            //console.log(className);
          }
-
         }
         // ポーズを描く
         drawPose(pose);
@@ -119,7 +119,7 @@
       function drawPose(pose) {
         if (webcam.canvas) {
           ctx.drawImage(webcam.canvas, 0, 0);
-        }
+        } 
       }
 
       // カウントダウン
@@ -127,12 +127,13 @@
         document.querySelector('#start').addEventListener('click',function(e){
           e.preventDefault();
           var count = 4;
+          　        document.getElementById("textarea1").innerText = "ここに翻訳されます";
           var id = setInterval(function(){
             count--;
             document.querySelector('#timer').textContent=count;
             if(count <= 0) clearInterval(id);
           },1000);
-          setTimeout(AI, 6500);
+          setTimeout(AI, 6000);
         });
       }
 
@@ -145,7 +146,6 @@
 
         pose1 = className;
         console.log("1" + pose1);
-
 
         function sleep(waitSec, callbackFunc) {
           var spanedSec = 0;
@@ -207,30 +207,35 @@
             speechSynthesis.speak(
             new SpeechSynthesisUtterance(text)
             );
+            document.getElementById("textarea1").innerText = "おはよう";
           }
           else if(pose1 == '1-5' && pose2 == '1-6'){
             var text = "こんにちは"
             speechSynthesis.speak(
             new SpeechSynthesisUtterance(text)
             );
+            document.getElementById("textarea1").innerText = "こんにちは";
           }
           else if(pose1 == '1-6' && pose2 == '1-7'){
             var text = "こんばんは"
             speechSynthesis.speak(
             new SpeechSynthesisUtterance(text)
             );
+            document.getElementById("textarea1").innerText = "こんばんは";
           }
           else if(pose1 == '1-8'){
             var text = "おやすみなさい"
             speechSynthesis.speak(
             new SpeechSynthesisUtterance(text)
             );
+            document.getElementById("textarea1").innerText = "おやすみなさい";
           }
           else if(pose1 == '1-3'){
             var text = "お願い"
             speechSynthesis.speak(
             new SpeechSynthesisUtterance(text)
             );
+            document.getElementById("textarea1").innerText = "お願い";
           }
         });
       }

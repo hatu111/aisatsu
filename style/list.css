@@ -41,6 +41,68 @@ h3 {
   margin-bottom: 50px;
 }
 
+.spli{
+  margin-bottom: 50px;
+}
+
 .danraku {
    margin-top: 40px; 
 }
+
+th {
+  background: #e9727e;
+  border: solid 1px #ccc;
+  color: #fff;
+  padding: 10px;
+}
+td {
+  border: solid 1px #ccc;
+  padding: 10px;
+}
+.tblist {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 640px) {
+  .tblist {
+    width: 90%;
+  }
+  .tblist tr {
+    display: block;
+    float: left;
+  }
+  .tblist tr td, 
+  .tblist tr th {
+    border-left: none;
+    display: block;
+    height: 150px;
+  }
+  .tblist thead {
+    display: block;
+    float: left;
+    width: 30%;
+  }
+  .tblist thead tr {
+    width: 100%;
+  }
+  .tblist tbody {
+    display: block;
+    float: left;
+    width: 70%;
+  }
+  .tblist tbody tr {
+    width: 50%;
+  }
+  .tblist tr td + td {
+    border-left: none;
+  }
+  .tblist tbody td:last-child {
+    border-bottom: solid 1px #ccc;
+  }
+}
+
+.photo {
+  width:100%;
+  max-width: 100%;
+  height: auto;
+  }

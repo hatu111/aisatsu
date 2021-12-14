@@ -45,7 +45,6 @@
             </li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
-        </div>
       </div>
     </header>
 
@@ -133,7 +132,7 @@
             document.querySelector('#timer').textContent=count;
             if(count <= 0) clearInterval(id);
           },1000);
-          setTimeout(AI, 6000);
+          setTimeout(AI, 5600);
         });
       }
 
@@ -155,7 +154,7 @@
               clearInterval(id);
               if (callbackFunc) callbackFunc();
             }
-          }, 800);
+          }, 700);
         }
         sleep(2, function () {
           pose2 = className;
@@ -170,7 +169,7 @@
               clearInterval(id);
               if (callbackFunc) callbackFunc();
             }
-          }, 800);
+          }, 700);
         }
         sleep(4, function () {
           pose3 = className;
@@ -185,7 +184,7 @@
               clearInterval(id);
               if (callbackFunc) callbackFunc();
             }
-          }, 800);
+          }, 700);
         }
         sleep(6, function () {
           pose4 = className;
@@ -199,7 +198,7 @@
               clearInterval(id);
               if (callbackFunc) callbackFunc();
             }
-          }, 800);
+          }, 700);
         }
         sleep(10, function () {
           if(pose1 == '1-1' && pose2 == '1-2'){

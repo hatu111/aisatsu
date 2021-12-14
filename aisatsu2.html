@@ -20,27 +20,27 @@
 <body>
   <header>
     <div class="head">
-    <div id="titlelogo">
-      <img src="image/title.png" alt="しゅわっちロゴ">
-    </div>
+      <div id="titlelogo">
+        <img src="image/title.png" alt="しゅわっちロゴ">
+      </div>
       <ul class="menu">
         <li><a href="index.html">Home</a>
         </li>
         <li><a href="rec.html">録音</a></li>
         <li><a href="#">手話AI</a>
-            <ul>
-              <li><a href="aisatsu.html">あいさつ1</a></li>
-              <li><a href="#">あいさつ2</a></li>
-              <li><a href="henji.html">返事</a></li>
-              <li><a href="kimochi.html">気持ち</a></li>
-              <li><a href="gakkou.html">学校</a></li>
-            </ul>
+          <ul>
+            <li><a href="aisatsu.html">あいさつ1</a></li>
+            <li><a href="#">あいさつ2</a></li>
+            <li><a href="henji.html">返事</a></li>
+            <li><a href="kimochi.html">気持ち</a></li>
+            <li><a href="gakkou.html">学校</a></li>
+          </ul>
         </li>
         <li><a href="#">使い方</a>
-            <ul>
-              <li><a href="rec-how.html">録音</a></li>
-              <li><a href="shuwa-how.html">手話AI</a></li>
-              <li><a href="list.html">手話リスト</a></li>
+          <ul>
+            <li><a href="rec-how.html">録音</a></li>
+            <li><a href="shuwa-how.html">手話AI</a></li>
+            <li><a href="list.html">手話リスト</a></li>
             </ul>
         </li>
         <li><a href="contact.html">Contact</a></li>
@@ -54,10 +54,12 @@
       <button class="start" type="button" onclick="init()">カメラスタート</button>
       <a href="" id="start" class="start">手話スタート</a>
       <span id="timer">3</span>
-      <div><canvas id="canvas"></canvas></div>      
+      <div><canvas id="canvas"></canvas></div>
+      <div id="textarea1">手話がここに翻訳されます</div>      
       <div id="label-container"></div>
     </div>  
   </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
     <script type="text/javascript">
@@ -130,7 +132,7 @@
           document.querySelector('#timer').textContent=count;
           if(count <= 0) clearInterval(id);
         },1000);
-        setTimeout(AI, 6500);
+        setTimeout(AI, 6000);
       });
     }
 
@@ -205,18 +207,21 @@
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
+          document.getElementById("textarea1").innerText = "さようなら";
         }
         else if(pose1 == '5-2' && pose2 == '5-3'){
           var text = "ありがとう"
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
+          document.getElementById("textarea1").innerText = "ありがとう";
         }
         else if(pose1 == '5-4' && pose2 == '5-5'){
           var text = "ごめんなさい"
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
+          document.getElementById("textarea1").innerText = "ごめんなさい";
         }
       });
     }

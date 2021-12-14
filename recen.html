@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/list.css">
-    <title>Shuwacchi</title>
+    <link rel="stylesheet" href="style/rec.css">
+    <title>Shuwacchi | Recording</title>
     <link rel="apple-touch-icon" sizes="180x180" href="image/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="image/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="image/favicon/favicon-16x16.png">
@@ -20,8 +20,8 @@
   <header>
     <div class="head">
     <div id="titlelogo">
-      <img src="image/titleen.png" alt="shuwacchi-logo">
-    </div>
+        <img src="image/titleen.png" alt="shuwacchi-logo">
+      </div>
       <ul class="menu">
         <li><a href="indexen.html">Home</a>
           <ul>
@@ -48,22 +48,26 @@
         </li>
         <li><a href="contacten.html">Contact</a></li>
       </ul>
-    </div>
-  </header>
+      </div>
+    </header>
 
     <div class="container">
-      <div class ="nakami">
-        <div>
-          <h1>About Shuwacchi</h1>
-           'Shuwacchi' is a website translating Japanese sign language to Voice.<BR>
-           Only 0.06% of Japanese people use sign language.<BR>
-           Sign language is different by country. So, We created 'translating to English feature'<BR>
-           We hope our software will be able to help you.<BR>
-              <div id="logo2">
-                <img src ="image/logo2.png" alt="しゅわっちについて">
-              </div>
-        </div>
+  
+      <div class="wrapper">
+        <section class="main-controls">
+          <canvas class="visualizer" height="0px"></canvas>
+          <div id="buttons">
+            <button class="record">Recording</button>
+            <button class="stop">Stop</button>
+          </div>
+        </section>
+  
+        <section class="sound-clips">
+        </section>
+  
       </div>
+  
+      <script src="scripts/appen.js"></script>
     </div>
     
     <footer>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/shuwa.css">
+    <link rel="stylesheet" href="style/list.css">
+    <title>Shuwacchi | AI-Feeing</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="image/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="image/apple-touch-icon" sizes="180x180" href="image/favicon/apple-touch-icon-180x180.png">
+</head>
+<body>
+  <header>
+    <div class="head">
+      <div id="titlelogo">
+        <img src="image/titleen.png" alt=" Shuwacchi-logo">
+      </div>
+      <ul class="menu">
+        <li><a href="indexen.html">Home</a>
+          <ul>
+            <li><a href="index.html">日本語</a></li>
+          </ul>
+        </li>
+        <li><a href="recen.html">Recording</a>
+        </li>
+        <li><a href="#">Sign Language translation</a>
+            <ul>
+              <li><a href="aisatsuen.html">Greetings1</a></li>
+              <li><a href="aisatxu2en.html">Greetings2</a></li>
+              <li><a href="henjien.html">Reply</a></li>
+              <li><a href="#">Feeling</a></li>
+              <li><a href="gakkouen.html">School</a></li>
+            </ul>
+        </li>
+        <li><a href="#">How to use</a>
+            <ul>
+              <li><a href="rec-howen.html">Recording</a></li>
+              <li><a href="shuwa-howen.html">Sign Language translation</a></li>
+              <li><a href="listen.html">List of sign language</a></li>
+            </ul>
+        </li>
+        <li><a href="contacten.html">Contact</a></li>
+      </ul>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="nakami">
+        <h1>Greetings2</h1>
+        <button class="start" type="button" onclick="init()">Start Camera</button>
+        <a href="" id="start" class="start">Start AI</a>
+        <span id="timer">3</span>
+        <div><canvas id="canvas"></canvas></div>  
+        <div id="textarea1">Translated word is displayed here</div>
+        <div id="label-container"></div>
+      </div>  
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+    <script type="text/javascript">
+
+    // Teachable Machineの気持ちモデルへのリンク
+    const URL = "https://teachablemachine.withgoogle.com/models/Cq2SMoTrL/";
+    let model, webcam, ctx, labelContainer, maxPredictions;
+        
+    async function init() {
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
+        
+      // モデルのロード
+      model = await tmPose.load(modelURL, metadataURL);
+      maxPredictions = model.getTotalClasses();
+        
+      // カメラ
+      const size = 400;
+      const flip = true; 
+      webcam = new tmPose.Webcam(size, size, flip);
+      await webcam.setup();
+      await webcam.play();
+      window.requestAnimationFrame(loop);
+        
+      const canvas = document.getElementById("canvas");
+      canvas.width = size; canvas.height = size;
+      ctx = canvas.getContext("2d");
+      labelContainer = document.getElementById("label-container");
+      for (let i = 0; i < maxPredictions; i++) {
+        labelContainer.appendChild(document.createElement("div"));
+      }
+    }
+        
+    async function loop(timestamp) {
+      webcam.update();
+      await predict();
+      window.requestAnimationFrame(loop);
+    }
+    
+    async function predict() {
+      const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+      const prediction = await model.predict(posenetOutput);
+      for (let i = 0; i < maxPredictions; i++) {
+       const classPrediction =
+       prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+       labelContainer.childNodes[i].innerHTML = classPrediction;
+       if(prediction[i].probability > 0.9){
+         this.className = prediction[i].className;
+         //console.log(className);
+       }
+
+      }
+      // ポーズを描く
+      drawPose(pose);
+    }
+        
+    function drawPose(pose) {
+      if (webcam.canvas) {
+        ctx.drawImage(webcam.canvas, 0, 0);
+      }
+    }
+
+    // カウントダウン
+    window.onload=function(){
+      document.querySelector('#start').addEventListener('click',function(e){
+        e.preventDefault();
+        var count = 4;
+        var id = setInterval(function(){
+          count--;
+          document.querySelector('#timer').textContent=count;
+          if(count <= 0) clearInterval(id);
+        },1000);
+        setTimeout(AI, 6000);
+      });
+    }
+
+    // AIの判定部分
+    function AI(){
+      var pose1 = 0;
+      var pose2 = 0;
+      var pose3 = 0;
+      var pose4 = 0;
+
+      pose1 = className;
+      console.log("1" + pose1);
+
+
+      function sleep(waitSec, callbackFunc) {
+        var spanedSec = 0;
+        var id = setInterval(function () {
+          spanedSec++;
+          if (spanedSec >= waitSec) {
+            clearInterval(id);
+            if (callbackFunc) callbackFunc();
+          }
+        }, 800);
+      }
+      sleep(2, function () {
+        pose2 = className;
+        console.log("2" + pose2);
+      });
+
+      function sleep(waitSec, callbackFunc) {
+        var spanedSec = 0;
+        var id = setInterval(function () {
+          spanedSec++;
+          if (spanedSec >= waitSec) {
+            clearInterval(id);
+            if (callbackFunc) callbackFunc();
+          }
+        }, 800);
+      }
+      sleep(4, function () {
+        pose3 = className;
+        console.log("3" + pose3);
+      });
+
+      function sleep(waitSec, callbackFunc) {
+        var spanedSec = 0;
+        var id = setInterval(function () {
+          spanedSec++;
+          if (spanedSec >= waitSec) {
+            clearInterval(id);
+            if (callbackFunc) callbackFunc();
+          }
+        }, 800);
+      }
+      sleep(6, function () {
+        pose4 = className;
+        console.log("4" + pose4);
+      });
+      function sleep(waitSec, callbackFunc) {
+        var spanedSec = 0;
+        var id = setInterval(function () {
+          spanedSec++;
+          if (spanedSec >= waitSec) {
+            clearInterval(id);
+            if (callbackFunc) callbackFunc();
+          }
+        }, 800);
+      }
+      sleep(10, function () {
+        if(pose1 == '3-1' && pose2 == '3-2'){
+          var text = "嬉しいです"
+          speechSynthesis.speak(
+          new SpeechSynthesisUtterance(text)
+          );
+          document.getElementById("textarea1").innerText = "嬉しいです";
+        }
+        else if(pose1 == '3-3' && pose2 == '3-5'){
+          var text = "頑張って"
+          speechSynthesis.speak(
+          new SpeechSynthesisUtterance(text)
+          );
+          document.getElementById("textarea1").innerText = "頑張って";
+        }
+        else if(pose1 == '3-5' && pose2 == '3-3'){
+          var text = "怒っている"
+          speechSynthesis.speak(
+          new SpeechSynthesisUtterance(text)
+          );
+          document.getElementById("textarea1").innerText = "怒っている";
+        }
+        else if(pose1 == '3-7' && pose2 == '3-8'){
+          var text = "驚いた"
+          speechSynthesis.speak(
+          new SpeechSynthesisUtterance(text)
+          );
+          document.getElementById("textarea1").innerText = "驚いた";
+        }
+        else if(pose1 == '3-9' && pose2 == '3-10'){
+          var text = "お願い"
+          speechSynthesis.speak(
+          new SpeechSynthesisUtterance(text)
+          );
+          document.getElementById("textarea1").innerText = "お願い";
+        }
+      });
+    }
+    </script>         
+  <footer>
+    <div id="button">footer</div>
+    <div id="container">
+      <div id="cont">
+        <div class="copyright">
+          <p>© 2021 - Hatsumaker</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

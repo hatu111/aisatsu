@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
+<html lang="en">
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/shuwa.css">
     <link rel="stylesheet" href="style/list.css">
-    <title>しゅわっち | 手話AI-あいさつ２</title>
+    <title>Shuwacchi | AI-Greetings2</title>
     <link rel="apple-touch-icon" sizes="180x180" href="image/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="image/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="image/favicon/favicon-16x16.png">
@@ -21,63 +21,49 @@
   <header>
     <div class="head">
       <div id="titlelogo">
-        <img src="image/title.png" alt="しゅわっちロゴ">
+        <img src="image/titleen.png" alt=" Shuwacchi-logo">
       </div>
       <ul class="menu">
-        <li><a href="index.html">ホーム</a>
+        <li><a href="indexen.html">Home</a>
           <ul>
-            <li><a href="indexen.html">English</a></li>
+            <li><a href="index.html">日本語</a></li>
           </ul>
         </li>
-        <li><a href="rec.html">録音</a></li>
-        <li><a href="#">手話翻訳</a>
+        <li><a href="recen.html">Recording</a>
+        </li>
+        <li><a href="#">Sign Language translation</a>
             <ul>
-              <li><a href="aisatsu.html">あいさつ1</a></li>
-              <li><a href="#">あいさつ2</a></li>
-              <li><a href="henji.html">返事</a></li>
-              <li><a href="kimochi.html">気持ち</a></li>
-              <li><a href="gakkou.html">学校</a></li>
-              <li><a href="new.html">2021年新用語</a></li>
+              <li><a href="aisatsuen.html">Greetings1</a></li>
+              <li><a href="#">Greetings2</a></li>
+              <li><a href="henjien.html">Reply</a></li>
+              <li><a href="kimochien.html">Feeling</a></li>
+              <li><a href="gakkouen.html">School</a></li>
+              <li><a href="newen.html">New Word</a></li>
             </ul>
         </li>
-        <li><a href="#">使い方</a>
+        <li><a href="#">How to use</a>
             <ul>
-              <li><a href="rec-how.html">録音</a></li>
-              <li><a href="shuwa-how.html">手話翻訳</a></li>
-              <li><a href="list.html">手話リスト</a></li>
+              <li><a href="rec-howen.html">Recording</a></li>
+              <li><a href="shuwa-howen.html">Sign Language translation</a></li>
+              <li><a href="listen.html">List of sign language</a></li>
             </ul>
         </li>
-        <li><a href="contact.html">お問い合わせ</a></li>
+        <li><a href="contacten.html">Contact</a></li>
       </ul>
     </div>
   </header>
 
-  <div class="container">
-    <div class="nakami">
-      <h1>あいさつ2</h1>
-      <div class="translate-left"> 
-        <button class="start" type="button" onclick="init()">カメラスタート</button>
-        <a href="" id="start" class="start">手話スタート</a>
+    <div class="container">
+      <div class="nakami">
+        <h1>Greetings2</h1>
+        <button class="start" type="button" onclick="init()">Start Camera</button>
+        <a href="" id="start" class="start">Start AI</a>
         <span id="timer">3</span>
-        <div><canvas id="canvas"></canvas></div>
-        <div id="textarea1">手話がここに翻訳されます</div>      
+        <div><canvas id="canvas"></canvas></div>  
+        <div id="textarea1">Translated word is displayed here</div>
         <div id="label-container"></div>
-      </div>
-
-      <div class="wrapper">
-        <section class="main-controls">
-          <canvas class="visualizer" height="0px"></canvas>
-          <div id="buttons">
-            <button id="voice-start" class="record">話す</button>
-            <button id="voice-stop" class="stop">終わり</button>
-            <div id="voice-here"></div>
-          </div>
-        </section>
-        <script src="scripts/voicestart.js"></script>
-      </div>
-      <div class = "none">.</div>
+      </div>  
     </div>
-  </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
@@ -222,25 +208,26 @@
       }
       sleep(10, function () {
         if(pose1 == '5-1' || pose2 == '5-1'){
-          var text = "さようなら"
+          var text = "Good bye"
           speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
+          var speech = new SpeechSynthesisUtterance(text);
+	        speech.lang = 'en-US';
+	        speechSynthesis.speak(speech);
           document.getElementById("textarea1").innerText = "さようなら";
         }
         else if(pose1 == '5-2' && pose2 == '5-3'){
-          var text = "ありがとう"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
+          var text = "Thank you"
+          var speech = new SpeechSynthesisUtterance(text);
+	        speech.lang = 'en-US';
+	        speechSynthesis.speak(speech);
           document.getElementById("textarea1").innerText = "ありがとう";
         }
         else if(pose1 == '5-4' && pose2 == '5-5'){
-          var text = "ごめんなさい"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "ごめんなさい";
+          var text = "Sorry"
+          var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "ごめんなさい";
         }
       });
     }

@@ -207,39 +207,39 @@
       }
       sleep(10, function () {
         if(pose1 == '2-1' && pose2 == '2-2'){
-          var text = "分かりました"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "分かりました";
+          var text = "I see"
+          var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "分かりました";
         }
         else if(pose1 == '2-3' || pose2 == '2-3'){
-          var text = "いいえ"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "いいえ";
+          var text = "No"
+          var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "いいえ";
         }
         else if(pose1 == '2-5' && pose2 == '2-6'){
-          var text = "分かりません"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "分かりません";
+          var text = "I don't know"
+          var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "分かりません";
         }
         else if(pose1 == '2-7' && pose2 == '2-5'){
-          var text = "できます"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "できます";
+          var text = "I can do it"
+          var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "できます";
         }
         else if(pose1 == '2-11'){
-          var text = "違います"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "違います";
+          var text = "It's different"
+          var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "違います";
         }
       });
     }

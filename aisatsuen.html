@@ -210,35 +210,35 @@
             var speech = new SpeechSynthesisUtterance(text);
 	          speech.lang = 'en-US';	// アメリカ英語
 	          speechSynthesis.speak(speech);	// 音声読み上げ
-            document.getElementById("textarea1").innerText = "Good morning.";
+            document.getElementById("textarea1").innerText = "おはよう";
           }
           else if(pose1 == '1-5' && pose2 == '1-6'){
             var text = "Hello."
             var speech = new SpeechSynthesisUtterance(text);
-	          speech.lang = 'en-US';	// アメリカ英語
-	          speechSynthesis.speak(speech);	// 音声読み上げ
-            document.getElementById("textarea1").innerText = "Hello.";
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "こんにちは";
           }
           else if(pose1 == '1-6' && pose2 == '1-7'){
             var text = "Good evening"
             var speech = new SpeechSynthesisUtterance(text);
-	          speech.lang = 'en-US';	// アメリカ英語
-	          speechSynthesis.speak(speech);	// 音声読み上げ
-            document.getElementById("textarea1").innerText = "Goode evening";
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "こんばんは";
           }
           else if(pose1 == '1-8'){
             var text = "Good night."
             var speech = new SpeechSynthesisUtterance(text);
 	          speech.lang = 'en-US';	// アメリカ英語
 	          speechSynthesis.speak(speech);	// 音声読み上げ
-            document.getElementById("textarea1").innerText = "Good night.";
+            document.getElementById("textarea1").innerText = "おやすみなさい";
           }
           else if(pose1 == '1-3'){
             var text = "Thank you."
             var speech = new SpeechSynthesisUtterance(text);
 	          speech.lang = 'en-US';	// アメリカ英語
 	          speechSynthesis.speak(speech);	// 音声読み上げ
-            document.getElementById("textarea1").innerText = "Thank you.";
+            document.getElementById("textarea1").innerText = "お願い";
           }
         });
       }

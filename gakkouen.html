@@ -38,6 +38,7 @@
               <li><a href="henjien.html">Reply</a></li>
               <li><a href="kimochien.html">Feeling</a></li>
               <li><a href="#">School</a></li>
+              <li><a href="newen.html">New Word</a></li>
             </ul>
         </li>
         <li><a href="#">How to use</a>
@@ -49,8 +50,8 @@
         </li>
         <li><a href="contacten.html">Contact</a></li>
       </ul>
-      </div>
-    </header>
+    </div>
+  </header>
 
     <div class="container">
       <div class="nakami">
@@ -207,31 +208,31 @@
         }
         sleep(10, function () {
           if(pose1 == '4-1' && pose2 == '4-2'){
-            var text = "給食"
-            speechSynthesis.speak(
-            new SpeechSynthesisUtterance(text)
-            );
+            var text = "Lunch"
+            var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
             document.getElementById("textarea1").innerText = "給食";
           }
           else if(pose1 == '4-3' && pose2 == '4-4'){
-            var text = "宿題"
-            speechSynthesis.speak(
-            new SpeechSynthesisUtterance(text)
-            );
+            var text = "Homework"
+            var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
             document.getElementById("textarea1").innerText = "宿題";
           }
           else if(pose1 == '4-5' && pose2 == '4-6'){
-            var text = "英語"
-            speechSynthesis.speak(
-            new SpeechSynthesisUtterance(text)
-            );
+            var text = "English"
+            var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
             document.getElementById("textarea1").innerText = "英語";
           }
           else if(pose1 == '4-4' && pose2 == '4-9'){
-            var text = "学校"
-            speechSynthesis.speak(
-            new SpeechSynthesisUtterance(text)
-            );
+            var text = "School"
+            var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
             document.getElementById("textarea1").innerText = "学校";
           }
         });

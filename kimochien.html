@@ -34,10 +34,11 @@
         <li><a href="#">Sign Language translation</a>
             <ul>
               <li><a href="aisatsuen.html">Greetings1</a></li>
-              <li><a href="aisatxu2en.html">Greetings2</a></li>
+              <li><a href="aisatsu2en.html">Greetings2</a></li>
               <li><a href="henjien.html">Reply</a></li>
               <li><a href="#">Feeling</a></li>
               <li><a href="gakkouen.html">School</a></li>
+              <li><a href="newen.html">New Word</a></li>
             </ul>
         </li>
         <li><a href="#">How to use</a>
@@ -49,8 +50,8 @@
         </li>
         <li><a href="contacten.html">Contact</a></li>
       </ul>
-      </div>
-    </header>
+    </div>
+  </header>
 
     <div class="container">
       <div class="nakami">
@@ -207,39 +208,39 @@
       }
       sleep(10, function () {
         if(pose1 == '3-1' && pose2 == '3-2'){
-          var text = "嬉しいです"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "嬉しいです";
+          var text = "I'm happy"
+          var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "嬉しいです";
         }
         else if(pose1 == '3-3' && pose2 == '3-5'){
-          var text = "頑張って"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "頑張って";
+          var text = "Do one's best"
+          var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "頑張って";
         }
         else if(pose1 == '3-5' && pose2 == '3-3'){
-          var text = "怒っている"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "怒っている";
+          var text = "I'm angry"
+          var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "怒っている";
         }
         else if(pose1 == '3-7' && pose2 == '3-8'){
-          var text = "驚いた"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "驚いた";
+          var text = "I was surprised"
+          var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "驚いた";
         }
         else if(pose1 == '3-9' && pose2 == '3-10'){
-          var text = "お願い"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "お願い";
+          var text = "Excuse me"
+          var speech = new SpeechSynthesisUtterance(text);
+	          speech.lang = 'en-US';
+	          speechSynthesis.speak(speech);
+            document.getElementById("textarea1").innerText = "すみません";
         }
       });
     }

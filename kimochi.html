@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/shuwa.css">
     <link rel="stylesheet" href="style/list.css">
-    <title>しゅわっち | 手話AI-気持ち</title>
+    <title>Shuwacchi | AI-Feeing</title>
     <link rel="apple-touch-icon" sizes="180x180" href="image/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="image/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="image/favicon/favicon-16x16.png">
@@ -20,30 +20,34 @@
 <body>
   <header>
     <div class="head">
-    <div id="titlelogo">
-      <img src="image/title.png" alt="しゅわっちロゴ">
-    </div>
+      <div id="titlelogo">
+        <img src="image/titleen.png" alt=" Shuwacchi-logo">
+      </div>
       <ul class="menu">
-        <li><a href="index.html">Home</a>
+        <li><a href="index.html">ホーム</a>
+          <ul>
+            <li><a href="indexen.html">English</a></li>
+          </ul>
         </li>
         <li><a href="rec.html">録音</a></li>
-        <li><a href="#">手話AI</a>
+        <li><a href="#">手話翻訳</a>
             <ul>
               <li><a href="aisatsu.html">あいさつ1</a></li>
               <li><a href="aisatsu2.html">あいさつ2</a></li>
               <li><a href="henji.html">返事</a></li>
               <li><a href="#">気持ち</a></li>
               <li><a href="gakkou.html">学校</a></li>
+              <li><a href="new.html">2021年新用語</a></li>
             </ul>
         </li>
         <li><a href="#">使い方</a>
             <ul>
               <li><a href="rec-how.html">録音</a></li>
-              <li><a href="shuwa-how.html">手話AI</a></li>
+              <li><a href="shuwa-how.html">手話翻訳</a></li>
               <li><a href="list.html">手話リスト</a></li>
             </ul>
         </li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
       </ul>
     </div>
   </header>
@@ -51,12 +55,27 @@
   <div class="container">
     <div class="nakami">
       <h1>気持ち</h1>
-      <button class="start" type="button" onclick="init()">カメラスタート</button>
-      <a href="" id="start" class="start">手話スタート</a>
-      <span id="timer">3</span>
-      <div><canvas id="canvas"></canvas></div>      
-      <div id="label-container"></div>
-    </div>  
+      <div class="translate-left"> 
+        <button class="start" type="button" onclick="init()">カメラスタート</button>
+        <a href="" id="start" class="start">手話スタート</a>
+        <span id="timer">3</span>
+        <div><canvas id="canvas"></canvas></div>  
+        <div id="textarea1">手話がここに翻訳されます</div>
+        <div id="label-container"></div>
+      </div> 
+      <div class="wrapper">
+        <section class="main-controls">
+          <canvas class="visualizer" height="0px"></canvas>
+          <div id="buttons">
+            <button id="voice-start" class="record">話す</button>
+            <button id="voice-stop" class="stop">終わり</button>
+            <div id="voice-here"></div>
+          </div>
+        </section>
+        <script src="scripts/voicestart.js"></script>
+      </div>
+      <div class = "none">.</div>
+    </div>
   </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -131,7 +150,7 @@
           document.querySelector('#timer').textContent=count;
           if(count <= 0) clearInterval(id);
         },1000);
-        setTimeout(AI, 6500);
+        setTimeout(AI, 6000);
       });
     }
 
@@ -206,30 +225,35 @@
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
+          document.getElementById("textarea1").innerText = "嬉しいです";
         }
         else if(pose1 == '3-3' && pose2 == '3-5'){
           var text = "頑張って"
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
+          document.getElementById("textarea1").innerText = "頑張って";
         }
         else if(pose1 == '3-5' && pose2 == '3-3'){
           var text = "怒っている"
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
+          document.getElementById("textarea1").innerText = "怒っている";
         }
         else if(pose1 == '3-7' && pose2 == '3-8'){
           var text = "驚いた"
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
+          document.getElementById("textarea1").innerText = "驚いた";
         }
         else if(pose1 == '3-9' && pose2 == '3-10'){
           var text = "お願い"
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
+          document.getElementById("textarea1").innerText = "お願い";
         }
       });
     }

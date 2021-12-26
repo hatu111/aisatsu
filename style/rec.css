@@ -20,6 +20,7 @@ body{
   
   .main-controls {
     padding: 0.5rem 0;
+    padding-bottom: 50px;
   }
   
   canvas {
@@ -144,4 +145,9 @@ body{
       margin: 0 auto;
     }
   }
+
+#voice-here{
+  font-size: 28px;
+  margin-top: 50px;
+}
   

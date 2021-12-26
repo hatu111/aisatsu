@@ -156,4 +156,7 @@ ul.menu > li > ul > li > a{
     text-align: center;
   }
 
-  
+
+  .howtophoto {
+    border: 3px solid #8bd3dd;
+}

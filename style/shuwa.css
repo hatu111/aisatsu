@@ -23,7 +23,7 @@
   }
 
 #timer {
-    font-size: 36px;
+    font-size: 48px;
     font-weight: bold;
     color: #001858;
 }
@@ -33,3 +33,44 @@
     font-weight: bold;
     color: #001858;
 }
+
+
+.translate-left {
+    float: left;
+    width: 50%;
+ }
+
+.none {
+   clear: both;
+}
+
+.record {
+    font-size: 18px;
+    display: inline-block;
+    padding: 0.5em 1em 0.3em;
+    color: #ffffff;
+    border-radius: 25px;
+    background-color: #f582ae;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.stop {
+    font-size: 18px;
+    display: inline-block;
+    padding: 0.5em 1em 0.3em;
+    color: #ffffff;
+    border-radius: 25px;
+    background-color:#001858;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+#voice-here{
+    font-size: 28px;
+    margin-top: 50px;
+  }

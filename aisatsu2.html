@@ -125,7 +125,7 @@
        const classPrediction =
        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
        labelContainer.childNodes[i].innerHTML = classPrediction;
-       if(prediction[i].probability > 0.9){
+       if(prediction[i].probability > 0.8){
          this.className = prediction[i].className;
          //console.log(className);
        }
@@ -151,7 +151,7 @@
           document.querySelector('#timer').textContent=count;
           if(count <= 0) clearInterval(id);
         },1000);
-        setTimeout(AI, 6000);
+        setTimeout(AI, 5000);
       });
     }
 
@@ -174,7 +174,7 @@
             clearInterval(id);
             if (callbackFunc) callbackFunc();
           }
-        }, 800);
+        }, 700);
       }
       sleep(2, function () {
         pose2 = className;
@@ -189,7 +189,7 @@
             clearInterval(id);
             if (callbackFunc) callbackFunc();
           }
-        }, 800);
+        }, 700);
       }
       sleep(4, function () {
         pose3 = className;
@@ -204,7 +204,7 @@
             clearInterval(id);
             if (callbackFunc) callbackFunc();
           }
-        }, 800);
+        }, 700);
       }
       sleep(6, function () {
         pose4 = className;
@@ -218,7 +218,7 @@
             clearInterval(id);
             if (callbackFunc) callbackFunc();
           }
-        }, 800);
+        }, 700);
       }
       sleep(10, function () {
         if(pose1 == '5-1' || pose2 == '5-1'){

@@ -13,6 +13,10 @@ ul li a{
   padding: 8px;
   text-align: center;
   text-decoration: none;
+  height: 4em;
+  display: grid;
+  place-items: center;
+
 }
 ul.menu li a:hover{
   text-decoration: none;

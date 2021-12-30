@@ -2,7 +2,6 @@ h1 {
   position: relative;
   padding: 0.25em 0;
 }
-
 h1:after {
   content: "";
   display: block;
@@ -10,7 +9,6 @@ h1:after {
   background: -webkit-linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
   background: linear-gradient(to right, rgb(255, 186, 115), #ffb2b2);
 }
-
 h2 {
   position: relative;
   line-height: 1.4;
@@ -18,37 +16,27 @@ h2 {
   display: inline-block;
   margin-top: 5px;
   margin-bottom: 5px;
-}
-  
-h2 {
   background: #001858; /*背景色*/
   padding: 0.5em;/*文字周りの余白*/
   color: white;/*文字を白に*/
   border-radius: 0.5em;/*角の丸み*/
 }
-
 h3 {
-  font-size: medium
-  ;
+  font-size: medium;
 }
-
 .list{
   margin: 30px;
 }
-
 .setumei{
   margin-top: 10px;
   margin-bottom: 50px;
 }
-
 .spli{
   margin-bottom: 50px;
 }
-
 .danraku {
    margin-top: 40px; 
 }
-
 th {
   background: #e9727e;
   border: solid 1px #ccc;
@@ -100,9 +88,8 @@ td {
     border-bottom: solid 1px #ccc;
   }
 }
-
 .photo {
   width:100%;
   max-width: 100%;
   height: auto;
-  }
+}

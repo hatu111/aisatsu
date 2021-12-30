@@ -5,18 +5,14 @@ const canvas = document.querySelector('.visualizer');
 const mainSection = document.querySelector('.main-controls');
 
 // 録音していないときに停止ボタンを押せないようにする
-
 stop.disabled = true;
 
 // web audio api を作る
-
 let audioCtx;
 const canvasCtx = canvas.getContext("2d");
 
 //　録音の部分
-
 if (navigator.mediaDevices.getUserMedia) {
-
   const constraints = { 
                         video: false,
                         audio: true 
@@ -25,11 +21,9 @@ if (navigator.mediaDevices.getUserMedia) {
 
   let onSuccess = function(stream) {
     const mediaRecorder = new MediaRecorder(stream);
-
     record.onclick = function() {
       mediaRecorder.start();
       console.log("start");
-
       stop.disabled = false;
       record.disabled = true;
     }
@@ -39,19 +33,16 @@ if (navigator.mediaDevices.getUserMedia) {
       console.log("stop");
       record.style.background = "";
       record.style.color = "";
-
       stop.disabled = true;
       record.disabled = false;
     }
 
     mediaRecorder.onstop = function(e) {
       const clipName = prompt('Please enter the recorded text.','Greetings');
-
       const clipContainer = document.createElement('article');
       const clipLabel = document.createElement('p');
       const audio = document.createElement('audio');
       const deleteButton = document.createElement('button');
-
       clipContainer.classList.add('clip');
       audio.setAttribute('controls', '');
       deleteButton.textContent = 'Delete';
@@ -100,7 +91,6 @@ if (navigator.mediaDevices.getUserMedia) {
   }
 
   navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError);
-
 } else {
    console.log('getUserMedia not supported on your browser!');
 }
@@ -109,9 +99,7 @@ function visualize(stream) {
   if(!audioCtx) {
     audioCtx = new AudioContext();
   }
-
   const source = audioCtx.createMediaStreamSource(stream);
-
   const analyser = audioCtx.createAnalyser();
   analyser.fftSize = 2048;
   const bufferLength = analyser.frequencyBinCount;
@@ -119,7 +107,6 @@ function visualize(stream) {
 
   source.connect(analyser);
   //analyser.connect(audioCtx.destination);
-
   draw()
 
   function draw() {
@@ -141,24 +128,18 @@ function visualize(stream) {
     let sliceWidth = WIDTH * 1.0 / bufferLength;
     let x = 0;
 
-
     for(let i = 0; i < bufferLength; i++) {
-
       let v = dataArray[i] / 128.0;
       let y = v * HEIGHT/2;
-
       if(i === 0) {
         canvasCtx.moveTo(x, y);
       } else {
         canvasCtx.lineTo(x, y);
       }
-
       x += sliceWidth;
     }
-
     canvasCtx.lineTo(canvas.width, canvas.height/2);
     canvasCtx.stroke();
-
   }
 }
 

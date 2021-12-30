@@ -10,7 +10,6 @@
     margin-bottom: 20px;
     text-decoration: none;
 }
-
 .inactive{
     display: inline-block;
     padding: 16px 24px;
@@ -18,32 +17,25 @@
     border: 1px;
     background: #f582ae;
     color: #fff;
-    box-shadow: 0px 2px 4px #575;
-    
+    box-shadow: 0px 2px 4px #575;   
   }
-
 #timer {
     font-size: 48px;
     font-weight: bold;
     color: #001858;
 }
-
 #textarea1 {
     font-size: 28px;
     font-weight: bold;
     color: #001858;
 }
-
-
 .translate-left {
     float: left;
     width: 50%;
- }
-
+}
 .none {
    clear: both;
 }
-
 .record {
     font-size: 18px;
     display: inline-block;
@@ -56,7 +48,6 @@
     margin-bottom: 20px;
     text-decoration: none;
 }
-
 .stop {
     font-size: 18px;
     display: inline-block;
@@ -69,7 +60,6 @@
     margin-bottom: 20px;
     text-decoration: none;
 }
-
 #voice-here{
     font-size: 28px;
     margin-top: 50px;

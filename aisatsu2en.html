@@ -227,21 +227,21 @@
           var speech = new SpeechSynthesisUtterance(text);
 	        speech.lang = 'en-US';
 	        speechSynthesis.speak(speech);
-          document.getElementById("textarea1").innerText = "さようなら";
+          document.getElementById("textarea1").innerText = "Good bye";
         }
         else if(pose1 == '5-2' && pose2 == '5-3'){
           var text = "Thank you"
           var speech = new SpeechSynthesisUtterance(text);
 	        speech.lang = 'en-US';
 	        speechSynthesis.speak(speech);
-          document.getElementById("textarea1").innerText = "ありがとう";
+          document.getElementById("textarea1").innerText = "Thank you";
         }
         else if(pose1 == '5-4' && pose2 == '5-5'){
           var text = "Sorry"
           var speech = new SpeechSynthesisUtterance(text);
 	          speech.lang = 'en-US';
 	          speechSynthesis.speak(speech);
-            document.getElementById("textarea1").innerText = "ごめんなさい";
+            document.getElementById("textarea1").innerText = "Sorry";
         }
       });
     }

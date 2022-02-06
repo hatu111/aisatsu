@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/styleen.css">
     <link rel="stylesheet" href="style/shuwa.css">
     <link rel="stylesheet" href="style/list.css">
     <title>Shuwacchi | AI-Feeling</title>
@@ -227,35 +227,35 @@
           var speech = new SpeechSynthesisUtterance(text);
 	          speech.lang = 'en-US';
 	          speechSynthesis.speak(speech);
-            document.getElementById("textarea1").innerText = "嬉しいです";
+            document.getElementById("textarea1").innerText = "I'm happy";
         }
         else if(pose1 == '3-3' && pose2 == '3-5'){
           var text = "Do one's best"
           var speech = new SpeechSynthesisUtterance(text);
 	          speech.lang = 'en-US';
 	          speechSynthesis.speak(speech);
-            document.getElementById("textarea1").innerText = "頑張って";
+            document.getElementById("textarea1").innerText = "Do one's best";
         }
         else if(pose1 == '3-5' && pose2 == '3-3'){
           var text = "I'm angry"
           var speech = new SpeechSynthesisUtterance(text);
 	          speech.lang = 'en-US';
 	          speechSynthesis.speak(speech);
-            document.getElementById("textarea1").innerText = "怒っている";
+            document.getElementById("textarea1").innerText = "I'm angry";
         }
         else if(pose1 == '3-7' && pose2 == '3-8'){
           var text = "I was surprised"
           var speech = new SpeechSynthesisUtterance(text);
 	          speech.lang = 'en-US';
 	          speechSynthesis.speak(speech);
-            document.getElementById("textarea1").innerText = "驚いた";
+            document.getElementById("textarea1").innerText = "I was surprised";
         }
         else if(pose1 == '3-9' && pose2 == '3-10'){
           var text = "Excuse me"
           var speech = new SpeechSynthesisUtterance(text);
 	          speech.lang = 'en-US';
 	          speechSynthesis.speak(speech);
-            document.getElementById("textarea1").innerText = "すみません";
+            document.getElementById("textarea1").innerText = "Excuse me";
         }
       });
     }

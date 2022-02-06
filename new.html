@@ -83,7 +83,7 @@
     <script type="text/javascript">
 
     // Teachable Machineの新用語モデルへのリンク
-    const URL = "https://teachablemachine.withgoogle.com/models/Cq2SMoTrL/";
+    const URL = "https://teachablemachine.withgoogle.com/models/6lc2EQVkm/";
     let model, webcam, ctx, labelContainer, maxPredictions;
         
     async function init() {
@@ -220,40 +220,33 @@
         }, 800);
       }
       sleep(10, function () {
-        if(pose1 == '3-1' && pose2 == '3-2'){
-          var text = "嬉しいです"
+        if(pose1 == '6-1' && pose2 == '6-2' && pose3 == '6-2' && pose4 == '6-3'){
+          var text = "緊急事態宣言"
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
-          document.getElementById("textarea1").innerText = "嬉しいです";
+          document.getElementById("textarea1").innerText = "緊急事態宣言";
         }
-        else if(pose1 == '3-3' && pose2 == '3-5'){
-          var text = "頑張って"
+        else if(pose1 == '6-4' && pose2 == '6-4' && pose3 == '6-5'){
+          var text = "コロナウイルス"
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
-          document.getElementById("textarea1").innerText = "頑張って";
+          document.getElementById("textarea1").innerText = "コロナウイルス";
         }
-        else if(pose1 == '3-5' && pose2 == '3-3'){
-          var text = "怒っている"
+        else if(pose1 == '6-6' && pose2 == '6-6' && pose3 == '6-7'){
+          var text = "人工知能"
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
-          document.getElementById("textarea1").innerText = "怒っている";
+          document.getElementById("textarea1").innerText = "人工知能";
         }
-        else if(pose1 == '3-7' && pose2 == '3-8'){
-          var text = "驚いた"
+        else if(pose1 == '6-4' && pose2 == '6-8'){
+          var text = "ダイバーシティ"
           speechSynthesis.speak(
           new SpeechSynthesisUtterance(text)
           );
-          document.getElementById("textarea1").innerText = "驚いた";
-        }
-        else if(pose1 == '3-9' && pose2 == '3-10'){
-          var text = "お願い"
-          speechSynthesis.speak(
-          new SpeechSynthesisUtterance(text)
-          );
-          document.getElementById("textarea1").innerText = "お願い";
+          document.getElementById("textarea1").innerText = "ダイバーシティ";
         }
       });
     }
